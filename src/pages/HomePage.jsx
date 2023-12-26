@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { redirect, useLoaderData } from "react-router-dom";
 import { supabase } from "../utils/client";
 
 export default function HomePage() {
@@ -25,6 +25,10 @@ export async function loader() {
     const {
       data: { user },
     } = await supabase.auth.getUser();
+
+    if(!user){
+      return redirect('/');
+    }
 
     return user;
   } catch (error) {
