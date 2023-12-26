@@ -1,6 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { Form, NavLink, useRouteLoaderData } from "react-router-dom";
+import Button from "./Button";
 
 export default function Nav() {
+  const isAuthenticated = useRouteLoaderData("root");
+
   return (
     <nav className="bg-purple-950">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -42,16 +45,28 @@ export default function Nav() {
           </svg>
         </button>
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-            <li>
-              <NavLink
-                to="/"
-                className="block py-2 px-3 bg-white rounded-md shadow-md text-purple-700 hover:bg-purple-500 hover:text-slate-50"
-                aria-current="page"
-              >
-                Accedi
-              </NavLink>
-            </li>
+          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-transparent dark:border-gray-700">
+            {!isAuthenticated && (
+              <li>
+                <NavLink
+                  to="/"
+                  className="block py-2 px-3 bg-white rounded-md shadow-md text-purple-700 hover:bg-purple-500 hover:text-slate-50"
+                  aria-current="page"
+                >
+                  Accedi
+                </NavLink>
+              </li>
+            )}
+
+            {isAuthenticated && (
+              <li>
+                <Form method="POST" action="logout">
+                  <Button className="block py-2 px-3 bg-white rounded-md shadow-md text-purple-700 hover:bg-purple-500 hover:text-slate-50">
+                    Esci
+                  </Button>
+                </Form>
+              </li>
+            )}
           </ul>
         </div>
       </div>
