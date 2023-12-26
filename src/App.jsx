@@ -1,12 +1,23 @@
-import './App.css'
+import "./App.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
+  const router = createBrowserRouter([
+    { path: "/", element: <MainLayout />, children: [
+      {index: true, element: <LoginPage />},
+      {path: '/register', element: <RegisterPage />},
+    ] },
+  ]);
 
   return (
     <>
-      <h1 className='text-center font-bold text-2xl text-sky-600'>Titolo della pagina</h1>
+      <RouterProvider router={router} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
