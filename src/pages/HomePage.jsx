@@ -12,7 +12,7 @@ export default function HomePage() {
 
   return (
     <>
-      <h1 className="text-center text-4xl font-bold py-5">Area personale</h1>
+      <h1 className="text-center text-4xl font-bold pt-14 pb-5">Area personale</h1>
       <p className="text-center">{user && user.email}</p>
       <p className="text-center">
         Ultimo accesso: {user && lastAccess.toLocaleDateString()}

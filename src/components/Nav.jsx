@@ -1,8 +1,8 @@
 import { Form, NavLink, useRouteLoaderData } from "react-router-dom";
-import Button from "./Button";
 import { initFlowbite } from "flowbite";
 import { useEffect } from "react";
 import blogIcon from "../assets/blogIcon.png";
+import avatarIcon from "../assets/avatar.png";
 
 export default function Nav() {
   const isAuthenticated = useRouteLoaderData("root");
@@ -10,6 +10,9 @@ export default function Nav() {
   useEffect(() => {
     initFlowbite();
   }, []);
+
+  const linkInactive = "block py-2 px-3 bg-transparent rounded-md shadow-md text-white hover:bg-purple-400/50 hover:text-slate-50";
+  const linkActive = "block py-2 px-3  shadow-md text-white bg-transparent border-b-2 rounded-e-md border-orange-300 hover:text-slate-50"
 
   return (
     <nav className="bg-purple-950">
@@ -56,8 +59,9 @@ export default function Nav() {
             <li>
               <NavLink
                 to="articles"
-                className="block py-2 px-3 bg-transparent rounded-md shadow-md text-white hover:bg-orange-400 hover:text-slate-50"
+                className={({isActive})=> isActive ? linkActive : linkInactive}
                 aria-current="page"
+                end
               >
                 Bacheca
               </NavLink>
@@ -66,8 +70,9 @@ export default function Nav() {
               <li>
                 <NavLink
                   to="/"
-                  className="block py-2 px-3 bg-white rounded-md shadow-md text-purple-700 hover:bg-purple-500 hover:text-slate-50"
+                  className={({isActive})=> isActive ? linkActive : linkInactive}
                   aria-current="page"
+                  end
                 >
                   Accedi
                 </NavLink>
@@ -79,8 +84,9 @@ export default function Nav() {
                 <li>
                   <NavLink
                     to="articles/new"
-                    className="block py-2 px-3 bg-transparent rounded-md shadow-md text-white hover:bg-orange-400 hover:text-slate-50"
+                    className={({isActive})=> isActive ? linkActive : linkInactive}
                     aria-current="page"
+                    end
                   >
                     + Pubblica
                   </NavLink>
@@ -88,18 +94,35 @@ export default function Nav() {
                 <li>
                   <NavLink
                     to="home"
-                    className="block py-2 px-3 bg-transparent rounded-md shadow-md text-white hover:bg-orange-400 hover:text-slate-50"
+                    className={({isActive})=> isActive ? linkActive : linkInactive}
                     aria-current="page"
+                    end
                   >
                     Area Personale
                   </NavLink>
                 </li>
+
                 <li>
-                  <Form method="POST" action="logout">
-                    <Button className="block py-2 px-3 bg-white rounded-md shadow-md text-purple-700 hover:bg-purple-500 hover:text-slate-50">
-                      Esci
-                    </Button>
+                  <Form
+                    method="POST"
+                    action="logout"
+                    className="flex items-center space-x-3 rtl:space-x-reverse py-2"
+                  >
+                    <button className="text-slate-300 hover:text-red-500">Esci</button>
                   </Form>
+                </li>
+                <li>
+                  <NavLink
+                    to="home"
+                    className="flex items-center space-x-3 mt-1 rtl:space-x-reverse"
+                    end
+                  >
+                    <img
+                      src={avatarIcon}
+                      className="h-9 rounded-full"
+                      alt="Avatar Image Icon Logo"
+                    />
+                  </NavLink>
                 </li>
               </>
             )}
