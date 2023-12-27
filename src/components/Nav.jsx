@@ -2,7 +2,7 @@ import { Form, NavLink, useRouteLoaderData } from "react-router-dom";
 import Button from "./Button";
 import { initFlowbite } from "flowbite";
 import { useEffect } from "react";
-import blogIcon from '../assets/blogIcon.png';
+import blogIcon from "../assets/blogIcon.png";
 
 export default function Nav() {
   const isAuthenticated = useRouteLoaderData("root");
@@ -76,6 +76,15 @@ export default function Nav() {
 
             {isAuthenticated && (
               <>
+                <li>
+                  <NavLink
+                    to="articles/new"
+                    className="block py-2 px-3 bg-transparent rounded-md shadow-md text-white hover:bg-orange-400 hover:text-slate-50"
+                    aria-current="page"
+                  >
+                    + Pubblica
+                  </NavLink>
+                </li>
                 <li>
                   <NavLink
                     to="home"

@@ -9,6 +9,7 @@ import { logout } from "./pages/LogoutPage";
 import { initFlowbite } from "flowbite";
 import { useEffect } from "react";
 import ArticlesPage from "./pages/ArticlesPage";
+import CreatePage, {loader as createPostLoader, action as createPostAction} from "./pages/CreatePage";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
       {path: 'register', element: <RegisterPage />, action: registerAction},
       {path: 'home', element: <HomePage />, loader: userLoader},
       {path: 'articles', element: <ArticlesPage />},
+      {path: 'articles/new', element: <CreatePage />, loader: createPostLoader, action: createPostAction},
       {path: 'logout', action: logout},
     ] },
   ]);
