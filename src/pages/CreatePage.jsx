@@ -39,6 +39,7 @@ export async function action({ request, params }) {
           title: postData.get("title"),
           content: postData.get("content"),
           user_id: user.id,
+          user_email: user.email,
         },
       ])
       .select();

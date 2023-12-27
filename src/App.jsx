@@ -8,11 +8,12 @@ import RegisterPage, { action as registerAction } from "./pages/RegisterPage";
 import { logout } from "./pages/LogoutPage";
 import { initFlowbite } from "flowbite";
 import { useEffect } from "react";
-import ArticlesPage from "./pages/ArticlesPage";
+import ArticlesPage, {loader as articlesLoader} from "./pages/ArticlesPage";
 import CreatePage, {
   loader as createPostLoader,
   action as createPostAction,
 } from "./pages/CreatePage";
+import {action as deleteAction} from './pages/DeletePost';
 
 function App() {
   useEffect(() => {
@@ -29,13 +30,14 @@ function App() {
         { index: true, element: <LoginPage />, action: loginAction },
         { path: "register", element: <RegisterPage />, action: registerAction },
         { path: "home", element: <HomePage />, loader: userLoader },
-        { path: "articles", element: <ArticlesPage /> },
+        { path: "articles", element: <ArticlesPage />, loader: articlesLoader},
         {
           path: "articles/new",
           element: <CreatePage />,
           loader: createPostLoader,
           action: createPostAction,
         },
+        {path: '/articles/del/:id', action: deleteAction},
         { path: "logout", action: logout },
       ],
     },

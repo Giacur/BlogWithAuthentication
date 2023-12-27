@@ -1,4 +1,4 @@
-import { redirect, useLoaderData } from "react-router-dom";
+import { Link, redirect, useLoaderData } from "react-router-dom";
 import { supabase } from "../utils/client";
 import PostCard from "../components/PostCard";
 
@@ -18,11 +18,19 @@ export default function HomePage() {
         Ultimo accesso: {user && lastAccess.toLocaleDateString()}
       </p>
 
-      <div className="py-5 flex flex-col items-center">
+      {articles.length > 0 && <div className="py-5 flex flex-col items-center">
         {articles.map(article=>{
-          return <PostCard key={article.id} article={article} user={user} />
+          return <PostCard owner key={article.id} article={article} user={user} />
         })}
-      </div>
+      </div>}
+
+      {articles.length < 1 && (
+        <div className="container mx-auto flex flex-col items-center">
+          <p className="text-center py-20 text-red-500">
+            Non hai ancora pubblicato nessun post <Link to="/articles/new" className="bg-purple-500 text-slate-50 px-4 py-2 rounded-md shadow-md ms-3 hover:bg-purple-800">+ Pubblica</Link>
+          </p>
+        </div>
+      )}
     </>
   );
 }
