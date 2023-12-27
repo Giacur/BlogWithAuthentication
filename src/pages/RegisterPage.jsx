@@ -20,7 +20,7 @@ export async function action({ request, params }) {
       email: userData.get('email'),
       password: userData.get('password'),
     });
-
+    alert('Abbiamo inviato una e-mail di verifica al tuo indirizzo di posta!');
     return redirect('/')
   } catch (error) {
     console.log(error);

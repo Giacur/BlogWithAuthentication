@@ -8,6 +8,7 @@ import RegisterPage, {action as registerAction} from "./pages/RegisterPage";
 import { logout } from "./pages/LogoutPage";
 import { initFlowbite } from "flowbite";
 import { useEffect } from "react";
+import ArticlesPage from "./pages/ArticlesPage";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
       {index: true, element: <LoginPage />, action: loginAction},
       {path: 'register', element: <RegisterPage />, action: registerAction},
       {path: 'home', element: <HomePage />, loader: userLoader},
+      {path: 'articles', element: <ArticlesPage />},
       {path: 'logout', action: logout},
     ] },
   ]);

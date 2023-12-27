@@ -2,13 +2,14 @@ import { Form, NavLink, useRouteLoaderData } from "react-router-dom";
 import Button from "./Button";
 import { initFlowbite } from "flowbite";
 import { useEffect } from "react";
+import blogIcon from '../assets/blogIcon.png';
 
 export default function Nav() {
   const isAuthenticated = useRouteLoaderData("root");
 
-  useEffect(()=>{
+  useEffect(() => {
     initFlowbite();
-  }, [])
+  }, []);
 
   return (
     <nav className="bg-purple-950">
@@ -18,7 +19,7 @@ export default function Nav() {
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
           <img
-            src="https://picsum.photos/100"
+            src={blogIcon}
             className="h-8 rounded-full"
             alt="Flowbite Logo"
           />
@@ -52,6 +53,15 @@ export default function Nav() {
         </button>
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-transparent dark:border-gray-700">
+            <li>
+              <NavLink
+                to="articles"
+                className="block py-2 px-3 bg-transparent rounded-md shadow-md text-white hover:bg-purple-500 hover:text-slate-50"
+                aria-current="page"
+              >
+                Bacheca
+              </NavLink>
+            </li>
             {!isAuthenticated && (
               <li>
                 <NavLink
@@ -65,13 +75,24 @@ export default function Nav() {
             )}
 
             {isAuthenticated && (
-              <li>
-                <Form method="POST" action="logout">
-                  <Button className="block py-2 px-3 bg-white rounded-md shadow-md text-purple-700 hover:bg-purple-500 hover:text-slate-50">
-                    Esci
-                  </Button>
-                </Form>
-              </li>
+              <>
+                <li>
+                  <NavLink
+                    to="home"
+                    className="block py-2 px-3 bg-transparent rounded-md shadow-md text-white hover:bg-purple-500 hover:text-slate-50"
+                    aria-current="page"
+                  >
+                    Area Personale
+                  </NavLink>
+                </li>
+                <li>
+                  <Form method="POST" action="logout">
+                    <Button className="block py-2 px-3 bg-white rounded-md shadow-md text-purple-700 hover:bg-purple-500 hover:text-slate-50">
+                      Esci
+                    </Button>
+                  </Form>
+                </li>
+              </>
             )}
           </ul>
         </div>
