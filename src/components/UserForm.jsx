@@ -1,7 +1,7 @@
 import { Form, NavLink } from "react-router-dom";
 import Button from "./Button";
 
-export default function UserForm({ login }) {
+export default function UserForm({ login, error }) {
   const inputClasses =
     "w-full p-1 border-0 border-b-2 border-purple-700 focus:outline-none focus:ring-0";
 
@@ -37,14 +37,25 @@ export default function UserForm({ login }) {
         <div className="my-3">
           {login ? (
             <p className="text-center text-sm text-slate-400">
-              Non hai un account? <NavLink to="/register" className="text-blue-700">registrati</NavLink>{" "}
+              Non hai un account?{" "}
+              <NavLink to="/register" className="text-blue-700">
+                registrati
+              </NavLink>{" "}
             </p>
           ) : (
             <p className="text-center text-sm text-slate-400">
-              Hai già un account? <NavLink to="/" className="text-blue-700">accedi</NavLink>{" "}
+              Hai già un account?{" "}
+              <NavLink to="/" className="text-blue-700">
+                accedi
+              </NavLink>{" "}
             </p>
           )}
         </div>
+        {error && (
+          <p className="text-center px-4 py-2 bg-red-600 text-slate-50 w-full">
+            {error.message}
+          </p>
+        )}
       </div>
     </Form>
   );

@@ -56,7 +56,7 @@ export default function Nav() {
             <li>
               <NavLink
                 to="articles"
-                className="block py-2 px-3 bg-transparent rounded-md shadow-md text-white hover:bg-purple-500 hover:text-slate-50"
+                className="block py-2 px-3 bg-transparent rounded-md shadow-md text-white hover:bg-orange-400 hover:text-slate-50"
                 aria-current="page"
               >
                 Bacheca
@@ -79,7 +79,7 @@ export default function Nav() {
                 <li>
                   <NavLink
                     to="home"
-                    className="block py-2 px-3 bg-transparent rounded-md shadow-md text-white hover:bg-purple-500 hover:text-slate-50"
+                    className="block py-2 px-3 bg-transparent rounded-md shadow-md text-white hover:bg-orange-400 hover:text-slate-50"
                     aria-current="page"
                   >
                     Area Personale

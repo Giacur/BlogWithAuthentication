@@ -1,12 +1,14 @@
 import UserForm from "../components/UserForm";
-import { redirect } from "react-router-dom";
+import { redirect, useActionData, json } from "react-router-dom";
 import { supabase } from "../utils/client";
 
 export default function RegisterPage() {
+  const error = useActionData();
+
   return (
     <>
       <div className="container mx-auto flex justify-center py-10">
-        <UserForm />
+        <UserForm error={error ? error : null} />
       </div>
     </>
   );
@@ -17,12 +19,17 @@ export async function action({ request, params }) {
 
   try {
     const { data, error } = await supabase.auth.signUp({
-      email: userData.get('email'),
-      password: userData.get('password'),
+      email: userData.get("email"),
+      password: userData.get("password"),
     });
-    alert('Abbiamo inviato una e-mail di verifica al tuo indirizzo di posta!');
-    return redirect('/')
+
+    if (!data.user) {
+      return json(error);
+    }
+
+    alert("Abbiamo inviato una e-mail di verifica al tuo indirizzo di posta!");
+    return redirect("/");
   } catch (error) {
-    console.log(error);
+    //!...
   }
 }

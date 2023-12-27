@@ -1,12 +1,14 @@
 import UserForm from "../components/UserForm";
-import { redirect } from "react-router-dom";
+import { redirect, json, useLoaderData, useActionData } from "react-router-dom";
 import { supabase } from "../utils/client";
 
 export default function LoginPage() {
+  const error = useActionData();
+
   return (
     <>
       <div className="container mx-auto flex justify-center py-10">
-        <UserForm login />
+        <UserForm login error={error ? error : null} />
       </div>
     </>
   );
@@ -21,8 +23,12 @@ export async function action({ request, params }) {
       password: userData.get("password"),
     });
 
+    if (!data.user) {
+      return json(error);
+    }
+
     return redirect("home");
   } catch (error) {
-    console.log(error);
+    //!...
   }
 }
