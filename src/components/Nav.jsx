@@ -1,5 +1,5 @@
 import { Form, NavLink, useRouteLoaderData } from "react-router-dom";
-import { initFlowbite } from "flowbite";
+// import { initFlowbite } from "flowbite";
 import { useEffect } from "react";
 import blogIcon from "../assets/blogIcon.png";
 import avatarIcon from "../assets/avatar.png";
@@ -7,9 +7,9 @@ import avatarIcon from "../assets/avatar.png";
 export default function Nav() {
   const isAuthenticated = useRouteLoaderData("root");
 
-  useEffect(() => {
-    initFlowbite();
-  }, []);
+  // useEffect(() => {
+  //   initFlowbite();
+  // }, []);
 
   const linkInactive =
     "block py-2 px-3 bg-transparent rounded-md shadow-md text-white hover:bg-purple-400/50 hover:text-slate-50";
