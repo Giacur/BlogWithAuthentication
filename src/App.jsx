@@ -6,7 +6,7 @@ import HomePage, { loader as userLoader } from "./pages/HomePage";
 import LoginPage, { action as loginAction } from "./pages/LoginPage";
 import RegisterPage, { action as registerAction } from "./pages/RegisterPage";
 import { logout } from "./pages/LogoutPage";
-import { initFlowbite } from "flowbite";
+// import { initFlowbite } from "flowbite";
 import { useEffect } from "react";
 import ArticlesPage, { loader as articlesLoader } from "./pages/ArticlesPage";
 import CreatePage, {
@@ -16,9 +16,9 @@ import CreatePage, {
 import { action as deleteAction } from "./pages/DeletePost";
 
 function App() {
-  useEffect(() => {
-    initFlowbite();
-  }, []);
+  // useEffect(() => {
+  //   initFlowbite();
+  // }, []);
 
   const router = createBrowserRouter([
     {
