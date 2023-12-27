@@ -6,8 +6,15 @@ import HomePage, {loader as userLoader} from './pages/HomePage'
 import LoginPage, {action as loginAction} from "./pages/LoginPage";
 import RegisterPage, {action as registerAction} from "./pages/RegisterPage";
 import { logout } from "./pages/LogoutPage";
+import { initFlowbite } from "flowbite";
+import { useEffect } from "react";
 
 function App() {
+
+  useEffect(()=>{
+    initFlowbite();
+  },[])
+
   const router = createBrowserRouter([
     { path: "/", 
     element: <MainLayout />, 

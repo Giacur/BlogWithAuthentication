@@ -1,8 +1,14 @@
 import { Form, NavLink, useRouteLoaderData } from "react-router-dom";
 import Button from "./Button";
+import { initFlowbite } from "flowbite";
+import { useEffect } from "react";
 
 export default function Nav() {
   const isAuthenticated = useRouteLoaderData("root");
+
+  useEffect(()=>{
+    initFlowbite();
+  }, [])
 
   return (
     <nav className="bg-purple-950">
