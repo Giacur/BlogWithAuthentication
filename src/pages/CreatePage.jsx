@@ -17,6 +17,11 @@ export async function loader() {
     const {
       data: { user },
     } = await supabase.auth.getUser();
+
+    if(!user){
+      return redirect('/')
+    }
+
     return user;
   } catch (error) {
     console.log(error);
