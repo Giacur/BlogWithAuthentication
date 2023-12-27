@@ -1,7 +1,9 @@
-import { Form } from "react-router-dom";
-import Button from '../components/Button'
+import { Form, useNavigation } from "react-router-dom";
+import Button from "../components/Button";
 
-export default function PostForm({userID}) {
+export default function PostForm({ userID }) {
+  const navigation = useNavigation();
+
   const inputClasses =
     "w-full p-1 border-0 border-b-2 border-purple-700 focus:outline-none focus:ring-0";
 
@@ -34,7 +36,11 @@ export default function PostForm({userID}) {
       </div>
 
       <div className="py-5 w-1/3 flex flex-col items-center">
-        <Button>Pubblica</Button>
+        <Button disabled={navigation.state !== "idle"}>
+          {navigation.state === "submitting" || navigation.state === "loading"
+            ? "Caricamento..."
+            : "Pubblica"}
+        </Button>
       </div>
     </Form>
   );

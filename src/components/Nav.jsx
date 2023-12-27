@@ -11,8 +11,10 @@ export default function Nav() {
     initFlowbite();
   }, []);
 
-  const linkInactive = "block py-2 px-3 bg-transparent rounded-md shadow-md text-white hover:bg-purple-400/50 hover:text-slate-50";
-  const linkActive = "block py-2 px-3  shadow-md text-white bg-transparent border-b-2 rounded-e-md border-orange-300 hover:text-slate-50"
+  const linkInactive =
+    "block py-2 px-3 bg-transparent rounded-md shadow-md text-white hover:bg-purple-400/50 hover:text-slate-50";
+  const linkActive =
+    "block py-2 px-3  shadow-md text-white bg-transparent border-b-2 rounded-e-md border-orange-300 hover:text-slate-50";
 
   return (
     <nav className="bg-purple-950">
@@ -59,7 +61,9 @@ export default function Nav() {
             <li>
               <NavLink
                 to="articles"
-                className={({isActive})=> isActive ? linkActive : linkInactive}
+                className={({ isActive }) =>
+                  isActive ? linkActive : linkInactive
+                }
                 aria-current="page"
                 end
               >
@@ -70,7 +74,9 @@ export default function Nav() {
               <li>
                 <NavLink
                   to="/"
-                  className={({isActive})=> isActive ? linkActive : linkInactive}
+                  className={({ isActive }) =>
+                    isActive ? linkActive : linkInactive
+                  }
                   aria-current="page"
                   end
                 >
@@ -84,7 +90,9 @@ export default function Nav() {
                 <li>
                   <NavLink
                     to="articles/new"
-                    className={({isActive})=> isActive ? linkActive : linkInactive}
+                    className={({ isActive }) =>
+                      isActive ? linkActive : linkInactive
+                    }
                     aria-current="page"
                     end
                   >
@@ -94,7 +102,9 @@ export default function Nav() {
                 <li>
                   <NavLink
                     to="home"
-                    className={({isActive})=> isActive ? linkActive : linkInactive}
+                    className={({ isActive }) =>
+                      isActive ? linkActive : linkInactive
+                    }
                     aria-current="page"
                     end
                   >
@@ -108,7 +118,9 @@ export default function Nav() {
                     action="logout"
                     className="flex items-center space-x-3 rtl:space-x-reverse py-2"
                   >
-                    <button className="text-slate-300 hover:text-red-500">Esci</button>
+                    <button className="text-slate-300 hover:text-red-500">
+                      Esci
+                    </button>
                   </Form>
                 </li>
                 <li>

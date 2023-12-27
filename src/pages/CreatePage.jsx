@@ -18,8 +18,8 @@ export async function loader() {
       data: { user },
     } = await supabase.auth.getUser();
 
-    if(!user){
-      return redirect('/')
+    if (!user) {
+      return redirect("/");
     }
 
     return user;
@@ -32,10 +32,9 @@ export async function action({ request, params }) {
   const postData = await request.formData();
 
   try {
-
     const {
-        data: { user },
-      } = await supabase.auth.getUser();
+      data: { user },
+    } = await supabase.auth.getUser();
 
     const { data, error } = await supabase
       .from("articles")

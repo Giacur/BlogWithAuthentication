@@ -1,6 +1,7 @@
-import { Link, redirect, useLoaderData } from "react-router-dom";
+import { Link, redirect, useLoaderData, useNavigation } from "react-router-dom";
 import { supabase } from "../utils/client";
 import PostCard from "../components/PostCard";
+import Spinner from "../components/Spinner";
 
 export default function HomePage() {
   const { user, articles } = useLoaderData();
@@ -10,13 +11,23 @@ export default function HomePage() {
     lastAccess = new Date(user.last_sign_in_at);
   }
 
+  const navigation = useNavigation();
+
   return (
     <>
-      <h1 className="text-center text-4xl font-bold pt-14 pb-5">Area personale</h1>
+      <h1 className="text-center text-4xl font-bold pt-14 pb-5">
+        Area personale
+      </h1>
       <p className="text-center">{user && user.email}</p>
       <p className="text-center">
         Ultimo accesso: {user && lastAccess.toLocaleDateString()}
       </p>
+
+      {navigation.state !== "idle" && (
+        <div className="container mx-auto px-48 flex justify-end">
+          <Spinner text="Caricamento..." />
+        </div>
+      )}
 
       {articles.length > 0 && (
         <div className="py-5 flex flex-col items-center">
